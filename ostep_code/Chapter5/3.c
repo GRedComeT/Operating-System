@@ -31,7 +31,3 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-// Both processes can write in a right way, but can not read concurrently. I think it is the file write and read way about the file
-// descriptor, which would be learnt in **Persistence**? Because I move the file offset by 'lseek()' everything become right. 
-// Simple said by chatGPT, even if each process has its own fd, but it point to the same file offset and status flag, or meta information.
-// When child call 'write()', the file offset change; that's why parent read nothing utill 'lseek()' to remove offset in start of file.
