@@ -59,3 +59,6 @@ int main(int argc, char* argv[]) {
 // For child #2 again, it read from pipe by read pipefd. But when pipe become empty, and parent will not close its pipefd, DEADLOCK!
 // So we need to close the parent pipefd in '[]' part if we need not some information from child pass through kernel pipe. 
 
+// MODIFY: The OS scheduler will not automatically syncs processes based on the state of the pipe. The child#2 waiting 
+// indefinitely is because read() will not receive '0' by the pipe (when all write pipe closed, return 0 to all reader).
+
